@@ -1,0 +1,31 @@
+{% extends "masterPage.html" %}
+
+{% block content %}
+<div class="row dbl-padding-left dbl-padding-right dbl-padding-bottom">
+        <div class="col-sm-4 col-md-4 col-xl-4 base-padding use-case-card-div">
+            <a id="create_site" class="no-style-a gist-card" style="width: 100%; background-color: lightgrey;" href="{{ url_for('add_dna_edge_device') }}">
+                <div class="use-case-card base-padding" style="width: 100%; position: relative; text-align:center;">
+                    Add Edge Device
+                </div>
+            </a>
+        </div>
+		<div class="col-sm-4 col-md-4 col-xl-4 base-padding use-case-card-div">
+            <a id="provision_device" class="no-style-a gist-card" style="width: 100%; background-color: lightgrey;" href="{{ url_for('add_dna_border_device') }}">
+                <div class="use-case-card base-padding" style="width: 100%; position: relative; text-align:center;">
+                    Add Border Device
+                </div>
+            </a>
+        </div>
+		<div class="col-sm-4 col-md-4 col-xl-4 base-padding use-case-card-div">
+            <a id="add_device_to_site" class="no-style-a gist-card" style="width: 100%; background-color: lightgrey;" href="{{ url_for('add_dna_control_plane_node') }}">
+                <div class="use-case-card base-padding" style="width: 100%; position: relative; text-align:center;">
+                    Add Control Plane Node
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+
+</div>
+{% endblock %}

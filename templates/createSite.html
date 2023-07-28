@@ -1,0 +1,19 @@
+{% extends "masterPage.html" %}
+
+{% block content %}
+<!-- msg that was passed while rendering template -->
+{% if status == "success" %}
+<b style="color: green;">{{ msg }}</b>
+{% else %}
+<b style="color: red;">{{ msg }}</b>
+{% endif %}
+<!-- Form for signup -->
+<form action="#" method="POST" id="create-site-form">
+    <label>Site Hierarchy</label>
+    <input type="text" name="site_hierarchy" required/><br><br>
+
+    <label>IP Address</label>
+    <input type="text" name="ip_address" required>
+    <button type="submit">Submit</button><br><br>
+</form>
+{% endblock %}

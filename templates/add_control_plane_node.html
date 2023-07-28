@@ -1,0 +1,34 @@
+{% extends "masterPage.html" %}
+{% block javascript %}
+<script>
+$(".chosen-select").chosen({
+  no_results_text: "Oops, nothing found!"
+})
+</script>
+{% endblock %}
+{% block content %}
+<br>
+<!-- msg that was passed while rendering template -->
+{% if status == "success" %}
+<b style="color: green;">{{ msg }}</b>
+{% else %}
+<b style="color: red;">{{ msg }}</b>
+{% endif %}
+<!-- Form for signup -->
+<form action="#" method="POST" id="add-control-node-form">
+    <label for="sites">Choose a site:</label>
+			<!--	Dropdown to choose site-->
+			<select data-placeholder="Begin typing a name to filter..." name="sites" id="sites" class="chosen-select">
+				{% for site in sites%}
+   				<option value="{{ site.id }}">{{ site.site_hierarchy }}</option>
+				{% endfor %}
+			</select>
+
+    <br>
+    <label for="ip_address">IP Address:</label>
+    <br>
+    <input name="ip_address", id="ip_address", type="text">
+    <br><br>
+    <button type="submit">Submit</button><br><br>
+</form>
+{% endblock %}

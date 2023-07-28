@@ -1,0 +1,50 @@
+{% extends "masterPage.html" %}
+<!-- index.html -->
+
+<!-- links to the pages -->
+{% block content %}
+{% if current_user.site %}
+<div class="row dbl-padding-left dbl-padding-right dbl-padding-bottom">
+        <div class="col-sm-4 col-md-4 col-xl-4 base-padding use-case-card-div">
+            <a id="create_site" class="no-style-a gist-card" style="width: 100%; background-color: lightgrey;" href="{{ url_for('create_site') }}">
+                <div class="use-case-card base-padding" style="width: 100%; position: relative; text-align:center;">
+                    Create Site
+                </div>
+            </a>
+        </div>
+		<div class="col-sm-4 col-md-4 col-xl-4 base-padding use-case-card-div">
+            <a id="provision_device" class="no-style-a gist-card" style="width: 100%; background-color: lightgrey;" href="{{ url_for('provision_device_to_site') }}">
+                <div class="use-case-card base-padding" style="width: 100%; position: relative; text-align:center;">
+                    Provision Device
+                </div>
+            </a>
+        </div>
+		<div class="col-sm-4 col-md-4 col-xl-4 base-padding use-case-card-div">
+            <a id="add_device_to_site" class="no-style-a gist-card" style="width: 100%; background-color: lightgrey;" href="{{ url_for('add_device_to_site') }}">
+                <div class="use-case-card base-padding" style="width: 100%; position: relative; text-align:center;">
+                    Add Device To Site
+                </div>
+            </a>
+        </div>
+    </div>
+<br><br>
+	{% endif %}
+	<!-- Show only if user is logged in -->
+	{% if current_user.is_authenticated %}
+		<!-- Show current users email -->
+		<b>Current user</b>: {{current_user.email}}<br>
+		<!--Show current users site access-->
+		<b>Site(s)</b>:<br> {% for s in current_user.site %}
+						{{s.site_hierarchy}} <br>
+					 {% endfor %}
+		<!-- Current users roles -->
+		<b>Role</b>: {% for role in current_user.roles%}
+						{{role.name}}
+			{% endfor %} <br><br>
+	<!-- Show if user is not logged in -->
+	{% else %}
+		<a href="/signup">Sign up</a> | <a href="/signin">Sign in</a>
+	{% endif %}
+	<br><br>
+	{% endblock %}
+</div>

@@ -1,0 +1,146 @@
+{% extends "masterPage.html" %}
+{% block head %}
+<style>
+    .form-container {
+        padding: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .form-group label {
+        padding-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .form-group input, .form-group select {
+        width: 100%;
+        height: 30px;
+    }
+
+    .form-columns {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .form-columns .form-group {
+        flex: 1 0 50%;
+    }
+
+    button {
+        height: 35px;
+        font-size: 14px;
+    }
+</style>
+
+{% endblock %}
+{% block javascript %}
+<script>
+$(".chosen-select").chosen({
+  no_results_text: "Oops, nothing found!"
+})
+</script>
+{% endblock %}
+{% block content %}
+<br>
+<!-- msg that was passed while rendering template -->
+{% if status == "success" %}
+<b style="color: green;">{{ msg }}</b>
+{% else %}
+<b style="color: red;">{{ msg }}</b>
+{% endif %}
+<!-- Form for signup -->
+<form action="#" method="POST" id="add-border-device-form" style="margin-left:3%;">
+    <label for="sites">Choose a site:</label>
+			<!--	Dropdown to choose site-->
+			<select data-placeholder="Begin typing a name to filter..." name="sites" id="sites" class="chosen-select">
+				{% for site in sites%}
+   				<option value="{{ site.id }}">{{ site.site_hierarchy }}</option>
+				{% endfor %}
+			</select>
+
+    <br>
+    <label for="device_management_ip_address">Device Management Ip Address:</label>
+    <br>
+    <input name="device_management_ip_address", id="device_management_ip_address", type="text">
+    <br><br>
+    <label for="device_role">Choose a device role:</label>
+			<!--	Dropdown to choose site-->
+			<select data-placeholder="Begin typing a name to filter..." name="device_role" id="device_role" class="chosen-select">
+   				<option value="Border_Node">Border Node</option>
+                <option value="Control_Plane_Node">Control Plane Node</option>
+                <option value="Edge_Node">Edge Node</option>
+			</select>
+    <br>
+    <label for="externalDomainRoutingProtocolName">Device Management Ip Address:</label>
+    <br>
+    <input name="externalDomainRoutingProtocolName", id="externalDomainRoutingProtocolName", type="text" value="BGP" readonly>
+    <br>
+    <label for="externalConnectivityIpPoolName">External Connectivity IP Pool Name:</label>
+    <br>
+    <input name="externalConnectivityIpPoolName", id="externalConnectivityIpPoolName", type="text">
+    <br><br>
+
+    <label for="internalAutonomouSystemNumber">Internal Autonomous System Number:</label>
+    <br>
+    <input name="internalAutonomouSystemNumber", id="internalAutonomouSystemNumber", type="text">
+    <br><br>
+
+    <label for="borderPriority">Border Priority:</label>
+    <br>
+    <input name="borderPriority", id="borderPriority", type="text">
+    <br><br>
+    <label for="borderSessionType">Choose a device role:</label>
+                <!--	Dropdown to choose site-->
+                <select data-placeholder="Begin typing a name to filter..." name="borderSessionType" id="borderSessionType" class="chosen-select">
+                    <option value="EXTERNAL">EXTERNAL</option>
+                    <option value="INTERNAL">INTERNAL</option>
+                    <option value="ANYWHERE">ANYWHERE</option>
+                </select>
+    <br>
+    <label for="connectedToInternet">Connected To Internet:</label>
+    <br>
+    <input type="checkbox" id="connectedToInternet" name="connectedToInternet">
+    <br><br>
+
+    <label for="sdaTransitNetworkName">SDA Transit Network Name:</label>
+    <br>
+    <input name="sdaTransitNetworkName", id="sdaTransitNetworkName", type="text">
+    <br><br>
+
+    <label for="borderWithExternalConnectivity">Border With External Connectivity:</label>
+    <br>
+    <input type="checkbox" id="borderWithExternalConnectivity" name="borderWithExternalConnectivity">
+    <br><br>
+
+    <label for="interfaceName">Interface Name:</label>
+    <br>
+    <input name="interfaceName", id="interfaceName", type="text">
+    <br><br>
+
+    <label for="interfaceDescription">Interface Description:</label>
+    <br>
+    <input name="interfaceDescription", id="interfaceDescription", type="text">
+    <br><br>
+
+    <label for="externalAutonomouSystemNumber">External Autonomous System Number:</label>
+    <br>
+    <input name="externalAutonomouSystemNumber", id="externalAutonomouSystemNumber", type="text">
+    <br><br>
+
+    <label for="virtualNetworkName">Virtual Network Name:</label>
+    <br>
+    <input name="virtualNetworkName", id="virtualNetworkName", type="text">
+    <br><br>
+
+    <label for="vlanName">VLAN Name:</label>
+    <br>
+    <input name="vlanName", id="vlanName", type="text">
+    <br><br>
+
+    <button type="submit">Submit</button><br><br>
+</form>
+{% endblock %}
